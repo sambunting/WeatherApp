@@ -1,0 +1,9 @@
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.title__mainInfo h2, .title__mainInfo p {
+    margin: 0px;
+    padding: 0px;
+}
