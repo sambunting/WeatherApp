@@ -64,7 +64,15 @@ class App extends React.Component {
       geolocationData = await this.getGeolocation();
     }
 
-    const locationData = await this.getLocation(`${ipAddressData.city},${ipAddressData.country}` || `${geolocationData.coords.latitude}, ${geolocationData.coords.longitude}`);
+    let locationString;
+
+    if (`${ipAddressData.city},${ipAddressData.country}` != "undefined,undefined") {
+      locationString = `${ipAddressData.city},${ipAddressData.country}`;
+    } else {
+      locationString = `${geolocationData.coords.latitude}, ${geolocationData.coords.longitude}`;
+    }
+
+    const locationData = await this.getLocation(locationString);
     
     if (!geolocationData) {
       geolocationData = {
