@@ -30,10 +30,17 @@
     margin: 0px;
 }
 
+@media screen and (max-width: 800px) {
+    .title__temprature {
+        padding-right: 20px;
+    }
+}
+
 @media screen and (max-width: 445px) {
     .title {
         flex-direction: column;
         justify-content: center;
+        margin-bottom: 30px;
     }
     
     .title__left {
@@ -48,5 +55,6 @@
     .title__temprature {
         margin-left: 0;
         margin-top: 20px;
+        padding-right: 0px;
     }
 }

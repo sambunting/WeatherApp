@@ -4,6 +4,7 @@ import './App.css';
 
 import Title from './components/title/title';
 import Search from './components/search/search';
+import DayChart from './components/dayChart/dayChart';
 
 class App extends React.Component {
   constructor(props) {
@@ -139,6 +140,21 @@ class App extends React.Component {
 
       locationString = locationArray.join(', ');      
     }
+  
+    let todayTemprature = [];
+
+    if (this.state.weatherData) {  
+      this.state.weatherData.hourly.data.map((hour) => {
+        if (todayTemprature.length < 16) {
+          todayTemprature.push({
+            x: hour.time,
+            y: Math.round(hour.temperature)
+          })
+        }
+
+        return true
+      })
+    }
 
     return (
       <div className="App">
@@ -147,12 +163,18 @@ class App extends React.Component {
         </div>
 
         {this.state.loaded &&
+          <>
           <Title data={{
             place: locationString,
             current: this.state.weatherData.currently.summary,
             icon: this.state.weatherData.currently.icon,
             temprature: this.state.weatherData.currently.temperature
           }}/>
+
+          <DayChart
+            chartData={todayTemprature}
+          ></DayChart>
+          </>
         }
       </div>
     );    
