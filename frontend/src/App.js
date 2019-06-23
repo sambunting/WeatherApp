@@ -66,7 +66,7 @@ class App extends React.Component {
 
     let locationString;
 
-    if (`${ipAddressData.city},${ipAddressData.country}` != "undefined,undefined") {
+    if (`${ipAddressData.city},${ipAddressData.country}` !== "undefined,undefined") {
       locationString = `${ipAddressData.city},${ipAddressData.country}`;
     } else {
       locationString = `${geolocationData.coords.latitude}, ${geolocationData.coords.longitude}`;
@@ -122,7 +122,8 @@ class App extends React.Component {
           <Title data={{
             place: locationString,
             current: this.state.weatherData.currently.summary,
-            icon: this.state.weatherData.currently.icon
+            icon: this.state.weatherData.currently.icon,
+            temprature: this.state.weatherData.currently.temperature
           }}/>
         }
       </div>

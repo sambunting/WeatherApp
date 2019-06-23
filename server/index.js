@@ -39,7 +39,7 @@ function getLatLong(string) {
 
 function makeWeatherRequest(lat, long) {
     return new Promise((resolve, reject) => {
-        axios.get(`https://api.darksky.net/forecast/${process.env.DARKSKY_API}/${lat},${long}`)
+        axios.get(`https://api.darksky.net/forecast/${process.env.DARKSKY_API}/${lat},${long}?units=uk2`)
         .then(response => {
             resolve(response.data)
         }).catch(response => {

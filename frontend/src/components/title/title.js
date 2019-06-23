@@ -3,7 +3,7 @@ import React from 'react';
 import './title.css';
 
 function Title(props) {
-    const { place, current, icon } = props.data;
+    const { place, current, icon, temprature } = props.data;
 
     let titleIcon;
 
@@ -15,10 +15,17 @@ function Title(props) {
 
     return (
         <div className="title">
-            <img className="title__icon" src={`icons/${titleIcon}.svg`} alt={titleIcon}/>
-            <div className="title__mainInfo">
-                <h2>{current}</h2>
-                <p>{place}</p>
+            <div className="title__left">
+                <img className="title__icon" src={`icons/${titleIcon}.svg`} alt={titleIcon}/>
+                <div className="title__mainInfo">
+                    <h2>{current}</h2>
+                    <p>{place}</p>
+                </div>
+            </div>
+            
+            <div className="title__temprature">
+                <h2>{Math.round(temprature)}</h2>
+                <p>°C</p>
             </div>
         </div>
     )
