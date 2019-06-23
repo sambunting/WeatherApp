@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Title from '../src/components/title/title';
+import Search from '../src/components/search/search';
 
 storiesOf('Title', module)
     .add('default', () => (
@@ -90,4 +91,9 @@ storiesOf('Title', module)
             "place": "Manchester, UK",
             "temprature": 15
         }}/>
+    ))
+
+storiesOf('Search', module)
+    .add('default', () => (
+        <Search/>
     ))

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 import Title from './components/title/title';
+import Search from './components/search/search';
 
 class App extends React.Component {
   constructor(props) {
@@ -92,6 +93,29 @@ class App extends React.Component {
     });
   }
 
+  async getWeatherByGeolocation() {
+    const geoData = await this.getGeolocation();
+    const locationData = await this.getLocation(`${geoData.coords.latitude}, ${geoData.coords.longitude}`);
+    const weatherData = await this.getWeather(geoData.coords.latitude, geoData.coords.longitude)
+
+    this.setState({
+      loaded: true, 
+      weatherData: weatherData,
+      locationData: locationData
+    })
+  }
+
+  async getWeatherByString(string) {
+    const locationData = await this.getLocation(string);
+    const weatherData = await this.getWeather(locationData.results[0].geometry.location.lat, locationData.results[0].geometry.location.lng)
+  
+    this.setState({
+      loaded: true, 
+      weatherData: weatherData,
+      locationData: locationData
+    })
+  }
+
   render() {
     let locationString = "";
     let locationArray = [];
@@ -118,6 +142,10 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <div className="search-container">
+          <Search onGeolocationRequest={() => this.getWeatherByGeolocation()} onSearch={(string) => this.getWeatherByString(string)}/>
+        </div>
+
         {this.state.loaded &&
           <Title data={{
             place: locationString,
