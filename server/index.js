@@ -1,8 +1,23 @@
 require('dotenv').config();
+const fs = require('fs');
+const https = require("https");
+const http = require("http");
 const express = require('express')
 const axios = require('axios')
 const cors = require('cors')
 const app = express()
+
+let options = {};
+
+if (process.env.NODE_ENV === "production") {
+    const key = fs.readFileSync('/etc/letsencrypt/live/bunting.dev/privkey.pem');
+    const cert = fs.readFileSync('/etc/letsencrypt/live/bunting.dev/fullchain.pem');
+
+    options = {
+        key: key,
+        cert: cert
+    }
+}
 
 function getIPData(ip) {
     return new Promise((resolve, reject) => {
@@ -72,5 +87,16 @@ app.get('/api/ipaddress/', async function (req, res) {
     res.send(ipData);
 });
 
-console.log('Application running on port 5000');
-app.listen(5000)
+if (process.env.NODE_ENV === "production") {
+    const httpsServer = https.createServer(options, app);
+    
+    httpsServer.listen(5000, () => {
+        console.log('Application running on HTTPS with port 5000');
+    })
+} else {
+    const httpServer = http.createServer(app);
+
+    httpServer.listen(4000, () => {
+        console.log('Application running on HTTP with port 4000');
+    })
+}
