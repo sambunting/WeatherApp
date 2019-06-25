@@ -5,6 +5,7 @@ import './App.css';
 import Title from './components/title/title';
 import Search from './components/search/search';
 import DayChart from './components/dayChart/dayChart';
+import DailyForcast from './components/dailyForcast/dailyForcast';
 
 class App extends React.Component {
   constructor(props) {
@@ -146,6 +147,8 @@ class App extends React.Component {
     if (this.state.weatherData) {  
       this.state.weatherData.hourly.data.map((hour) => {
         if (todayTemprature.length < 16) {
+          console.log(hour.time)
+
           todayTemprature.push({
             x: hour.time,
             y: Math.round(hour.temperature)
@@ -174,6 +177,8 @@ class App extends React.Component {
           <DayChart
             chartData={todayTemprature}
           ></DayChart>
+
+          <DailyForcast data={this.state.weatherData.daily.data}></DailyForcast>
           </>
         }
       </div>

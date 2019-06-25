@@ -2,6 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Title from '../src/components/title/title';
 import Search from '../src/components/search/search';
+import DayChart from '../src/components/dayChart/dayChart';
+import DailyForcast from '../src/components/dailyForcast/dailyForcast';
 
 storiesOf('Title', module)
     .add('default', () => (
@@ -96,4 +98,72 @@ storiesOf('Title', module)
 storiesOf('Search', module)
     .add('default', () => (
         <Search/>
+    ))
+
+storiesOf('DayChart', module)
+    .add('default', () => (
+        <DayChart chartData={[
+            {x: "1561496400", y: 15},
+            {x: "1561500000", y: 14},
+            {x: "1561503600", y: 14},
+            {x: "1561507200", y: 14},
+            {x: "1561510800", y: 13},
+            {x: "1561514400", y: 13},
+            {x: "1561518000", y: 12},
+            {x: "1561521600", y: 12},
+            {x: "1561525200", y: 12},
+            {x: "1561528800", y: 13},
+            {x: "1561532400", y: 15},
+            {x: "1561536000", y: 16},
+            {x: "1561539600", y: 17},
+            {x: "1561543200", y: 17},
+            {x: "1561546800", y: 18},
+            {x: "1561550400", y: 19}
+        ]}/>
+    ))    
+
+storiesOf('Daily Forcast', module)
+    .add('default', () => (
+        <DailyForcast data={[
+            {
+                icon: "rain", 
+                summary: "Light rain in the morning and afternoon.", 
+                time: "1561417200"
+            },
+            {
+                icon: "partly-cloudy-day", 
+                summary: "Mostly cloudy throughout the day.", 
+                time: "1561503600"
+            },
+            {
+                icon: "partly-cloudy-day", 
+                summary: "Partly cloudy throughout the day.", 
+                time: "1561590000"
+            },
+            {
+                icon: "clear-day", 
+                summary: "Clear throughout the day.", 
+                time: "1561676400"
+            },
+            {
+                icon: "partly-cloudy-day", 
+                summary: "Partly cloudy throughout the day.", 
+                time: "1561762800"
+            },
+            {
+                icon: "partly-cloudy-day", 
+                summary: "Mostly cloudy throughout the day.", 
+                time: "1561849200"
+            },
+            {
+                icon: "partly-cloudy-day", 
+                summary: "Mostly cloudy throughout the day.", 
+                time: "1561935600"
+            },
+            {
+                icon: "clear-day", 
+                summary: "Partly cloudy throughout the day.", 
+                time: "1562022000"
+            }
+        ]}/>
     ))
