@@ -6,6 +6,7 @@ import Title from './components/title/title';
 import Search from './components/search/search';
 import DayChart from './components/dayChart/dayChart';
 import DailyForcast from './components/dailyForcast/dailyForcast';
+import Footer from './components/footer/footer';
 
 class App extends React.Component {
   constructor(props) {
@@ -181,6 +182,8 @@ class App extends React.Component {
           <DailyForcast data={this.state.weatherData.daily.data}></DailyForcast>
           </>
         }
+
+        <Footer></Footer>
       </div>
     );    
   }

@@ -4,6 +4,7 @@ import Title from '../src/components/title/title';
 import Search from '../src/components/search/search';
 import DayChart from '../src/components/dayChart/dayChart';
 import DailyForcast from '../src/components/dailyForcast/dailyForcast';
+import Footer from '../src/components/footer/footer';
 
 storiesOf('Title', module)
     .add('default', () => (
@@ -166,4 +167,9 @@ storiesOf('Daily Forcast', module)
                 time: "1562022000"
             }
         ]}/>
+    ))
+
+storiesOf('Footer', module)
+    .add('default', () => (
+        <Footer/>
     ))

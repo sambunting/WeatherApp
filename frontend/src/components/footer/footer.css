@@ -1,0 +1,11 @@
+.footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.footer__attribution {
+    width: 100%;
+    max-width: 150px;
+}
