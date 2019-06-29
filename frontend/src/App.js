@@ -97,25 +97,33 @@ class App extends React.Component {
   }
 
   async getWeatherByGeolocation() {
-    const geoData = await this.getGeolocation();
-    const locationData = await this.getLocation(`${geoData.coords.latitude}, ${geoData.coords.longitude}`);
-    const weatherData = await this.getWeather(geoData.coords.latitude, geoData.coords.longitude)
-
     this.setState({
-      loaded: true, 
-      weatherData: weatherData,
-      locationData: locationData
-    })
+      loaded: false
+    }, async () => {
+      const geoData = await this.getGeolocation();
+      const locationData = await this.getLocation(`${geoData.coords.latitude}, ${geoData.coords.longitude}`);
+      const weatherData = await this.getWeather(geoData.coords.latitude, geoData.coords.longitude)
+
+      this.setState({
+        loaded: true, 
+        weatherData: weatherData,
+        locationData: locationData
+      })      
+    });
   }
 
   async getWeatherByString(string) {
-    const locationData = await this.getLocation(string);
-    const weatherData = await this.getWeather(locationData.results[0].geometry.location.lat, locationData.results[0].geometry.location.lng)
-  
     this.setState({
-      loaded: true, 
-      weatherData: weatherData,
-      locationData: locationData
+      loaded: false,
+    }, async () => {
+      const locationData = await this.getLocation(string);
+      const weatherData = await this.getWeather(locationData.results[0].geometry.location.lat, locationData.results[0].geometry.location.lng)
+    
+      this.setState({
+        loaded: true, 
+        weatherData: weatherData,
+        locationData: locationData
+      })      
     })
   }
 
@@ -148,8 +156,6 @@ class App extends React.Component {
     if (this.state.weatherData) {  
       this.state.weatherData.hourly.data.map((hour) => {
         if (todayTemprature.length < 16) {
-          console.log(hour.time)
-
           todayTemprature.push({
             x: hour.time,
             y: Math.round(hour.temperature)
@@ -166,7 +172,7 @@ class App extends React.Component {
           <Search onGeolocationRequest={() => this.getWeatherByGeolocation()} onSearch={(string) => this.getWeatherByString(string)}/>
         </div>
 
-        {this.state.loaded &&
+        {this.state.loaded ? (
           <>
           <Title data={{
             place: locationString,
@@ -181,7 +187,11 @@ class App extends React.Component {
 
           <DailyForcast data={this.state.weatherData.daily.data}></DailyForcast>
           </>
-        }
+        ) : (
+          <div id="loading-screen">
+            <div className="lds-dual-ring"></div>
+          </div>
+        )}
 
         <Footer></Footer>
       </div>
