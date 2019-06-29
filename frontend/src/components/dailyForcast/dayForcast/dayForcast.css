@@ -11,3 +11,28 @@
 .dayForcast__left .dayForcast__left-date {
     opacity: 0.5;
 }
+
+.dayForcast__right {
+    margin-left: auto;
+    padding-right: 20px;
+}
+
+.dayForcast__right h3 span {
+    font-weight: 400;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+@media screen and (max-width: 445px) {
+    .dayForcast {
+        margin-bottom: 20px;
+    }
+
+    .dayForcast__left {
+        padding-right: 20px;
+    }
+
+    .dayForcast__icon {
+        width: 48px;
+    }    
+}
