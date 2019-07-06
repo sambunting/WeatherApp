@@ -1,0 +1,35 @@
+%animation-slideIn {
+    animation: slidein 1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+%animation-slideDown {
+    animation: slidedown 1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slidein {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slidedown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}

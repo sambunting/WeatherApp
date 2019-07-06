@@ -7,6 +7,10 @@ import Search from './components/search/search';
 import DayChart from './components/dayChart/dayChart';
 import DailyForcast from './components/dailyForcast/dailyForcast';
 import Footer from './components/footer/footer';
+import ReactGA from 'react-ga';
+
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -17,6 +21,9 @@ class App extends React.Component {
     this.state = {
       loaded: false,
     }
+    
+    ReactGA.initialize('UA-119257917-2');
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
 
   getIpAddress() {
@@ -104,6 +111,12 @@ class App extends React.Component {
       const locationData = await this.getLocation(`${geoData.coords.latitude}, ${geoData.coords.longitude}`);
       const weatherData = await this.getWeather(geoData.coords.latitude, geoData.coords.longitude)
 
+      ReactGA.event({
+        category: 'Search',
+        action: 'Geolocation Search',
+        label: `${geoData.coords.latitude}, ${geoData.coords.longitude}`
+      })
+
       this.setState({
         loaded: true, 
         weatherData: weatherData,
@@ -119,6 +132,12 @@ class App extends React.Component {
       const locationData = await this.getLocation(string);
       const weatherData = await this.getWeather(locationData.results[0].geometry.location.lat, locationData.results[0].geometry.location.lng)
     
+      ReactGA.event({
+        category: 'Search',
+        action: 'Text Search',
+        label: string
+      })
+
       this.setState({
         loaded: true, 
         weatherData: weatherData,

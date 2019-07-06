@@ -1,0 +1,70 @@
+@import '../../sass/vars.scss';
+
+.title {
+    display: flex;
+    align-items: center;
+
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        @extend %animation-slideIn;
+    }
+
+    &__mainInfo h2, &__mainInfo p {
+        margin: 0px;
+        padding: 0px;
+        @extend %animation-slideIn;
+        animation-delay: 0.1s;
+    }
+
+    &__temprature {
+        display: flex;
+        margin-left: auto;
+        @extend %animation-slideIn;
+        animation-delay: 0.2s;
+
+        h2 {
+            font-size: 54px;
+            padding: 0px;
+            margin: 0px;
+            line-height: 42px;
+        }
+
+        p {
+            padding: 0px;
+            margin: 0px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .title__temprature {
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 445px) {
+    .title {
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 30px;
+
+        &__left {
+            flex-direction: column;
+            align-items: center;
+
+            h2, p {
+                text-align: center;
+            }
+        }
+
+        &__temprature {
+            margin-left: 0;
+            margin-top: 20px;
+            padding-right: 0px;
+        }
+    }
+}

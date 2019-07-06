@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './dailyForcast.css';
+import './dailyForcast.scss';
 import DayForcast from './dayForcast/dayForcast';
 
 class DailyForcast extends React.Component {
@@ -8,7 +8,7 @@ class DailyForcast extends React.Component {
         return (
             <div className="dailyForcast">
                 {this.props.data.map((day, index) => 
-                    <DayForcast data={day} key={index}/>
+                    <DayForcast data={day} key={index} index={index}/>
                 )}
             </div>
         )

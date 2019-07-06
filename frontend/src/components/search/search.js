@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './search.css';
+import './search.scss';
 
 class Search extends React.Component {
     textUpdate = (e) => {

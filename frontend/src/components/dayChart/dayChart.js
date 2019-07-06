@@ -1,7 +1,7 @@
 import React from 'react';
-import { VictoryChart, VictoryAxis, VictoryLine } from 'victory';
+import { VictoryChart, VictoryAxis, VictoryLine, VictoryLabel } from 'victory';
 
-import './dayChart.css';
+import './dayChart.scss';
 
 let isDown = false;
 let startX;
@@ -66,15 +66,26 @@ class DayChart extends React.Component {
                     >
                     <VictoryLine
                         style={{
-                        data: { stroke: "#FFC107" },
-                        labels: { fontSize: 10 }
+                            data: { stroke: "#FFC107" },
+                            labels: { fontSize: 10 }
                         }}
                         height={100}
+                        padding={{left: 20, right: 20, top: 30, bottom: 50}}
                         data={chartData}
                         animate={{
-                        onLoad: { duration: 1000 }
+                            onLoad: { 
+                                duration: 1000
+                            },
+                            delay: 1000
                         }}
                         labels={(d) => `${Math.round(d.y)}°`}
+                        labelComponent={
+                            <VictoryLabel 
+                                dy={0}
+                                renderInPortal
+                                className={'chart-label'}
+                            />
+                        }
                         interpolation="natural"
                     />
                     <VictoryAxis style={{

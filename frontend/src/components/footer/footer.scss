@@ -3,9 +3,9 @@
     padding-bottom: 30px;
     text-align: center;
     font-size: 10px;
-}
 
-.footer__attribution {
-    width: 100%;
-    max-width: 150px;
+    &__attribution {
+        width: 100%;
+        max-width: 150px;
+    }
 }

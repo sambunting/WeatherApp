@@ -5,19 +5,19 @@
     -moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
     box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.5);
     padding: 10px;
-}
 
-.search input {
-    font-size: 26px;
-    border: none;
-    width: calc(100% - 46px);
-}
+    input {
+        font-size: 26px;
+        border: none;
+        width: calc(100% - 46px);
 
-.search input:focus {
-    outline: none;
-}
+        &:focus {
+            outline: none;
+        }
+    }
 
-.search img {
-    width: 26px;
-    padding: 0px 10px;
+    img {
+        width: 26px;
+        padding: 0px 10px;
+    }
 }

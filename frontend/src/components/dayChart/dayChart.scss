@@ -1,0 +1,33 @@
+@import '../../sass/vars.scss';
+
+.dayChart {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    @extend %animation-slideIn;
+    animation-delay: 0.3s;
+
+    &::-webkit-scrollbar {
+        display: none; 
+    }
+    
+    .VictoryContainer {
+        pointer-events: all;
+        touch-action: auto !important;
+        scrollbar-width: none;
+    }
+
+    .VictoryContainer svg:first-of-type, .VictoryContainer div:first-of-type {
+        width: 800px !important;
+    }
+
+    .chart-label {
+        @extend %animation-slideDown;
+
+        @for $i from 1 through 17 {
+            &:nth-child(#{$i}) {
+                animation-delay: ($i * 0.062s) + 0.5s;
+            }
+        }
+    }
+}

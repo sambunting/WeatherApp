@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './dayForcast.css'
+import './dayForcast.scss'
 
 class DayForcast extends React.Component {
     render() {
@@ -11,7 +11,7 @@ class DayForcast extends React.Component {
         const dateString = `${day} ${date.getDate()} ${date.toLocaleString('en-GB', { month: 'long' })}`
 
         return (
-            <div className="dayForcast">
+            <div className={`dayForcast dayForcast-${this.props.index}`}>
                 <img className="dayForcast__icon" src={`icons/${icon}.svg`} alt={icon}/>
                 <div className="dayForcast__left">
                     <p className="dayForcast__left-date">{dateString}</p>
