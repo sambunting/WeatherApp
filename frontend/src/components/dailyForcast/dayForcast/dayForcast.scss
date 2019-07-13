@@ -1,49 +1,71 @@
 @import '../../../sass/vars.scss';
 
 .dayForcast {
-    display: flex;
-    align-items: center;
-    @extend %animation-slideIn;
+    &__overview {
+        display: flex;
+        align-items: center;
+        @extend %animation-slideIn;
 
-    &__left {
-        p {
-            padding: 0px;
-            margin: 0px;
+        &__left {
+            p {
+                padding: 0px;
+                margin: 0px;
+            }
+            
+            &-date {
+                opacity: 0.5;
+            }
         }
-        
-        &-date {
-            opacity: 0.5;
+
+        &__right {
+            margin-left: auto;
+            padding: 20px;
+            padding-right: 20px;
+
+            h3 span {
+                font-weight: 400;
+                font-size: 14px;
+                vertical-align: top;
+            }
+        }
+
+        @for $i from 1 through 8 {
+            &:nth-child(#{$i}) {
+                animation-delay: ($i * 0.1s) + 0.4s;
+            }
         }
     }
 
-    &__right {
-        margin-left: auto;
-        padding-right: 20px;
-
-        h3 span {
-            font-weight: 400;
-            font-size: 14px;
-            vertical-align: top;
+    &__info {
+        &-hidden {
+            display: none;
         }
-    }
 
-    @for $i from 1 through 8 {
-        &:nth-child(#{$i}) {
-            animation-delay: ($i * 0.1s) + 0.4s;
+        &__sunrise {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 60px;
+
+                &.sunset {
+                    margin-left: 40px;
+                }
+            }
         }
     }
 }
 
+
 @media screen and (max-width: 445px) {
-    .dayForcast {
-        margin-bottom: 20px;
-    }
+    .dayForcast__overview {
+        &__left {
+            padding-right: 20px;
+        }
 
-    .dayForcast__left {
-        padding-right: 20px;
+        &__icon {
+            width: 48px;
+        }
     }
-
-    .dayForcast__icon {
-        width: 48px;
-    }    
 }

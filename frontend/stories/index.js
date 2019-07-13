@@ -130,49 +130,65 @@ storiesOf('Daily Forcast', module)
                 icon: "rain", 
                 summary: "Light rain in the morning and afternoon.", 
                 time: "1561417200",
-                temperatureHigh: 15
+                temperatureHigh: 15,
+                sunriseTime: "1562990267",
+                sunsetTime: "1563050122"
             },
             {
                 icon: "partly-cloudy-day", 
                 summary: "Mostly cloudy throughout the day.", 
                 time: "1561503600",
-                temperatureHigh: 15
+                temperatureHigh: 15,
+                sunriseTime: "1562990267",
+                sunsetTime: "1563050122"
             },
             {
                 icon: "partly-cloudy-day", 
                 summary: "Partly cloudy throughout the day.", 
                 time: "1561590000",
-                temperatureHigh: 15
+                temperatureHigh: 15,
+                sunriseTime: "1562990267",
+                sunsetTime: "1563050122"
             },
             {
                 icon: "clear-day", 
                 summary: "Clear throughout the day.", 
                 time: "1561676400",
-                temperatureHigh: 15
+                temperatureHigh: 15,
+                sunriseTime: "1562990267",
+                sunsetTime: "1563050122"
             },
             {
                 icon: "partly-cloudy-day", 
                 summary: "Partly cloudy throughout the day.", 
                 time: "1561762800",
-                temperatureHigh: 15
+                temperatureHigh: 15,
+                sunriseTime: "1562990267",
+                sunsetTime: "1563050122"
             },
             {
                 icon: "partly-cloudy-day", 
                 summary: "Mostly cloudy throughout the day.", 
                 time: "1561849200",
-                temperatureHigh: 15
+                temperatureHigh: 15,
+                sunriseTime: "1562990267",
+                sunsetTime: "1563050122"
             },
             {
                 icon: "partly-cloudy-day", 
                 summary: "Mostly cloudy throughout the day.", 
                 time: "1561935600",
-                temperatureHigh: 15
+                temperatureHigh: 15,
+                sunriseTime: "1562990267",
+                sunsetTime: "1563050122"
             },
             {
                 icon: "clear-day", 
                 summary: "Partly cloudy throughout the day.", 
                 time: "1562022000",
-                temperatureHigh: 15
+                temperatureHigh: 15,
+                sunriseTime: "1562990267",
+                sunsetTime: "1563050122"
             }
         ]}/>
     ))
